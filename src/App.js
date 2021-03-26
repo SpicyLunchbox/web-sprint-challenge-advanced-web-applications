@@ -6,13 +6,20 @@ import PrivateRoute from './components/PrivateRoute';
 import BubblePage from './components/BubblePage';
 import "./styles.scss";
 
+const handleClick = () => {
+  localStorage.removeItem('token')
+  window.location.href='http://localhost:3000/';
+}
+
+
+
 function App() {
   return (
     <Router>
       <div className="App">
         <header>
           Color Picker Sprint Challenge
-          <a data-testid="logoutButton" href="#">logout</a>
+          <button data-testid="logoutButton" onClick={handleClick}>logout</button>
         </header> 
 
         <Route exact path="/" component={Login} />

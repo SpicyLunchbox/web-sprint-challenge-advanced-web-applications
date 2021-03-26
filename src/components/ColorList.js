@@ -20,9 +20,9 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
-    axiosWithAuth().put(`http://localhost5000/api/colors/${colorToEdit.id}`, colorToEdit)
+    axiosWithAuth().put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
       .then(res => {
-        axiosWithAuth().get('http://localhost5000/api/colors')
+        axiosWithAuth().get('http://localhost:5000/api/colors')
           .then(res => {
             updateColors(res.data)
           })
@@ -34,7 +34,7 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const deleteColor = color => {
-    axiosWithAuth().delete(`http://localhost5000/api/colors/${color.id}`)
+    axiosWithAuth().delete(`http://localhost:5000/api/colors/${color.id}`)
       .then(res => {
         updateColors(colors.filter(color => color.id !== Number(res.data)))
       })

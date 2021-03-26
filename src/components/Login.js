@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 
 
@@ -8,6 +8,7 @@ const Login = (props) => {
       password: '',   
   }
 
+  const [error, setError] = useState("")
   const [user, setUser] = useState(initialState)
 
   const handleChange = (e) => {
@@ -19,7 +20,6 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    errorFunc();
 
     axios.post('http://localhost:5000/api/login', user)
       .then(res => {
@@ -28,20 +28,10 @@ const Login = (props) => {
       })
       .catch(err => {
         console.log(err)
+        setError("Username or Password not valid")
+        return error
       })
     }
-  
-    let error = ""
-  const errorFunc = () => {
-    
-    if (user.username === "" || user.password === "") {
-      error = `Username or Password not valid`
-    } else {
-    error = ""
-    }
-    return error
-  }
-  //replace with error state
 
   return (
     <div>
