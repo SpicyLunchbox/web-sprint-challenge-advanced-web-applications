@@ -20,7 +20,7 @@ In this project you will create a login page and request a token from the server
 
 ### Task 1: Project Setup
 
-* [ ] Fork and clone this repository.
+* [X] Fork and clone this repository.
 * [ ] Create a new branch with the 
 - [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
