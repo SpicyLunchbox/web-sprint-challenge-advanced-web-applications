@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 import BubblePage from './components/BubblePage';
 import "./styles.scss";
 
+//removes token from localStorage and redirects to homepage upon logout button click
 const handleClick = () => {
   localStorage.removeItem('token')
   window.location.href='http://localhost:3000/';
@@ -30,7 +31,3 @@ function App() {
 }
 
 export default App;
-
-//Task List:
-//1. Render BubblePage as a PrivateRoute
-//2. Build the logout button to remove the localStorage Item.

@@ -1,4 +1,4 @@
-import { getDefaultNormalizer } from "@testing-library/dom";
+
 import React, { useEffect, useState } from "react";
 import {axiosWithAuth} from '../helpers/axiosWithAuth';
 
@@ -8,6 +8,7 @@ import ColorList from "./ColorList";
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
 
+  //upon component mount, function getData will be called, which requests color data from api and stores it in colorList
   useEffect(() => {
     getData();
   }, [])
@@ -34,5 +35,3 @@ const BubblePage = () => {
 
 export default BubblePage;
 
-//Task List:
-//1. When the component mounts, make an axios call to retrieve all color data and push to state.

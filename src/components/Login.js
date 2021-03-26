@@ -18,6 +18,7 @@ const Login = (props) => {
     })
   }
 
+  // upon form submission, user state is sent to API, which, if username and password are correct, returns a token to store in localStorage.  If username or password are incorrect, an errormessage is displayed in the DOM
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -29,7 +30,6 @@ const Login = (props) => {
       .catch(err => {
         console.log(err)
         setError("Username or Password not valid")
-        return error
       })
     }
 
