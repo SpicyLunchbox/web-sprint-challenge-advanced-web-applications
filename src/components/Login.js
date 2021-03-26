@@ -19,19 +19,28 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    errorFunc();
 
     axios.post('http://localhost:5000/api/login', user)
       .then(res => {
         localStorage.setItem('token', res.data.payload)
-        props.history.push('/privateRoute/');
+        props.history.push('/bubblepage/');
       })
       .catch(err => {
         console.log(err)
       })
     }
   
-  
-  const error = "";
+    let error = ""
+  const errorFunc = () => {
+    
+    if (user.username === "" || user.password === "") {
+      error = `Username or Password not valid`
+    } else {
+    error = ""
+    }
+    return error
+  }
   //replace with error state
 
   return (
@@ -58,7 +67,6 @@ const Login = (props) => {
           <button>Login</button>
         </form>
       </div>
-
       <p data-testid="errorMessage" className="error">{error}</p>
     </div>
   );

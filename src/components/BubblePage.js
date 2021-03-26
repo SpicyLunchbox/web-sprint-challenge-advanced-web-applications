@@ -1,10 +1,28 @@
+import { getDefaultNormalizer } from "@testing-library/dom";
 import React, { useEffect, useState } from "react";
+import {axiosWithAuth} from '../helpers/axiosWithAuth';
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, [])
+
+  const getData = () => {
+    axiosWithAuth().get('http://localhost5000/api/colors')
+    .then(res => {
+      console.log(res)
+      setColorList(res.data)
+    })
+    .catch(err => {
+      console.log(`Error: ${err}`)
+    })
+  }
+
 
   return (
     <div className="container">
